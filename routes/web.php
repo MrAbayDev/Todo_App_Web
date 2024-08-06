@@ -10,33 +10,6 @@ Router::get('/delete', fn() => require 'controller/deleteTask.php');
 Router::post('/complete', fn() => require 'controller/completeTask.php');
 (new Router)->post('/uncomplete', fn() => require 'controller/uncompleteTask.php');
 
-//(new Router)->post('/todos', function() {
-//    $task = new Task();
-//    $task->add($_POST['text']);
-//    header('Location: /todos');
-//    exit();
-//});
-//
-//(new Router)->post('/complete', function() {
-//    $task = new Task();
-//    $task->complete($_POST['id']);
-//    header('Location: /todos');
-//    exit();
-//});
-//
-//(new Router)->post('/uncomplete', function() {
-//    $task = new Task();
-//    $task->uncompleted($_POST['id']);
-//    header('Location: /todos');
-//    exit();
-//});
-
-//(new Router)->post('/delete', function() {
-//    $task = new Task();
-//    $task->delete((int)$_POST['id']);
-//    header('Location: /todos');
-//    exit();
-//});
 
 Router::get('/notes', fn() => require 'view/pages/notes.php');
 Router::get('/login', fn() => require 'view/pages/auth/login.php');
