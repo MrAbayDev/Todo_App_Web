@@ -2,8 +2,6 @@
 require 'vendor/autoload.php';
 require 'src/Bot.php';
 
-use Abdulqayum\TodoApp\Bot;
-
 $bot = new Bot();
 $update = json_decode(file_get_contents('php://input'), true);
 

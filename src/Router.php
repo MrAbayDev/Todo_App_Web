@@ -49,13 +49,13 @@ class Router
         return $this->updates;
     }
 
-    public function get($path, $callback): void
+    public static function get($path, $callback): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && parse_url($_SERVER['REQUEST_URI'])['path'] === $path) {
             $callback();
         }
     }
-    public function post($path, $callback): void
+    public static function post($path, $callback): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === $path) {
             $callback();

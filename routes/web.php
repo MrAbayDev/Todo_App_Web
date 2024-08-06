@@ -1,49 +1,46 @@
 <?php
 
-use Abdulqayum\TodoApp\Task;
+declare(strict_types=1);
+Router::get('/', fn() => require 'view/pages/home.php');
 
-$router = new Router();
+Router::get('/todos', fn() => require 'view/pages/todos.php');
 
-$router->get('/', fn() => require 'view/pages/home.php');
+Router::post('/todos', fn() => require 'controller/addTask.php');
+Router::get('/delete', fn() => require 'controller/deleteTask.php');
+Router::post('/complete', fn() => require 'controller/completeTask.php');
+(new Router)->post('/uncomplete', fn() => require 'controller/uncompleteTask.php');
 
-$router->get('/todos', fn() => require 'view/pages/todos.php');
+//(new Router)->post('/todos', function() {
+//    $task = new Task();
+//    $task->add($_POST['text']);
+//    header('Location: /todos');
+//    exit();
+//});
+//
+//(new Router)->post('/complete', function() {
+//    $task = new Task();
+//    $task->complete($_POST['id']);
+//    header('Location: /todos');
+//    exit();
+//});
+//
+//(new Router)->post('/uncomplete', function() {
+//    $task = new Task();
+//    $task->uncompleted($_POST['id']);
+//    header('Location: /todos');
+//    exit();
+//});
 
-$router->post('/todos', function() {
-    $task = new Task();
-    $task->add($_POST['text']);
-    header('Location: /todos');
-    exit();
-});
+//(new Router)->post('/delete', function() {
+//    $task = new Task();
+//    $task->delete((int)$_POST['id']);
+//    header('Location: /todos');
+//    exit();
+//});
 
-$router->post('/complete', function() {
-    $task = new Task();
-    $task->complete($_POST['id']);
-    header('Location: /todos');
-    exit();
-});
-
-$router->post('/uncomplete', function() {
-    $task = new Task();
-    $task->uncompleted($_POST['id']);
-    header('Location: /todos');
-    exit();
-});
-
-$router->get('/delete', function() {
-    $task = new Task();
-    $task->delete((int)$_GET['id']);
-    header('Location: /todos');
-    exit();
-});
-
-$router->get('/notes', fn() => require 'view/pages/notes.php');
-
-$router->get('/login', fn() => require 'view/pages/auth/login.php');
-
-$router->get('/register', fn() => require 'view/pages/auth/resgister.php');
-
-$router->post('/login', fn() => (new \Abdulqayum\TodoApp\User())->login());
-
-$router->get('/logout', fn() => (new \Abdulqayum\TodoApp\User())->logout());
-
-$router->post('/register', fn() => (new \Abdulqayum\TodoApp\User())->register());
+Router::get('/notes', fn() => require 'view/pages/notes.php');
+Router::get('/login', fn() => require 'view/pages/auth/login.php');
+Router::get('/register', fn() => require 'view/pages/auth/resgister.php');
+Router::post('/login', fn() => (new User())->login());
+Router::get('/logout', fn() => (new User())->logout());
+Router::post('/register', fn() => (new User())->register());

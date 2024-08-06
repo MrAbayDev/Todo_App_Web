@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace Abdulqayum\TodoApp;
+//namespace Abdulqayum\TodoApp;
 
-use PDO;
 
 class Task
 {

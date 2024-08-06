@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Abdulqayum\TodoApp;
+//namespace Abdulqayum\TodoApp;
 
 class User {
     private \PDO $pdo;

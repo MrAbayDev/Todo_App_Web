@@ -2,9 +2,6 @@
     "name": "abdulqayum/todo-app",
     "description": "reply all todo",
     "autoload": {
-        "psr-4": {
-            "Abdulqayum\\TodoApp\\": "src/"
-        },
         "classmap": [
             "."
         ]
