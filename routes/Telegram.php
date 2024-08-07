@@ -2,7 +2,8 @@
 require 'vendor/autoload.php';
 require 'src/Bot.php';
 
-$bot = new Bot();
+$token = $_ENV['TELEGRAM_TOKEN'];
+$bot = new Bot($token);
 $update = json_decode(file_get_contents('php://input'), true);
 
 if (isset($update['message'])) {

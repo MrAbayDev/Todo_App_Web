@@ -39,6 +39,7 @@
                     <?php echo htmlspecialchars($_SESSION['username']); ?>
                 </span>
                 <a href="/logout" class="btn btn-outline-danger mx-2">Logout</a>
+                <a href="https://t.me/app_to_do_bot" class="btn btn-outline-danger mx-2">Connect to Telegram</a>
             <?php endif; ?>
         </div>
     </div>

@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-//namespace Abdulqayum\TodoApp;
 
 
 class Task
