@@ -32,7 +32,6 @@ class User {
             }
         }
     }
-
     public function login(): void
     {
         if (isset($_POST['email'], $_POST['password'])) {
@@ -63,6 +62,17 @@ class User {
         exit();
     }
 
+    public function saveTelegramUsers(int $chatId): void
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE chat_id = :chat_id");
+        $stmt->bindParam(':chat_id', $chatId, PDO::PARAM_INT);
+        $stmt->execute();
+        if (!$stmt->fetch()) {
+            $stmt = $this->pdo->prepare("INSERT INTO users (chat_id) VALUES (:chat_id)");
+            $stmt->bindParam(':chat_id', $chatId, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+    }
     public function isUserExist(): bool
     {
         if (isset($_POST['email'])) {
@@ -73,6 +83,13 @@ class User {
             return (bool)$stmt->fetch();
         }
         return false;
+    }
+    public function updateChatIdByEmail(string $email, int $chatId): void
+    {
+        $stmt = $this->pdo->prepare("UPDATE users SET chat_id = :chat_id WHERE email = :email");
+        $stmt->bindParam(':chat_id', $chatId, PDO::PARAM_INT);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
     }
 }
 ?>

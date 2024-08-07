@@ -39,7 +39,15 @@
                     <?php echo htmlspecialchars($_SESSION['username']); ?>
                 </span>
                 <a href="/logout" class="btn btn-outline-danger mx-2">Logout</a>
-                <a href="https://t.me/app_to_do_bot" class="btn btn-outline-danger mx-2">Connect to Telegram</a>
+                <?php
+                $token=rand(1000000000,9999999999);
+                $db = DB::connect();
+                $stmt = $db->prepare("UPDATE users SET temp_token=:token WHERE email=:email");
+                $stmt->bindParam(':token', $token);
+                $stmt->bindParam(':email', $_SESSION['email']);
+                $stmt->execute();
+                ?>
+                <a href="https://t.me/app_to_do_bot?start=<?php $token ?>" class="btn btn-outline-danger mx-2">Connect to Telegram</a>
             <?php endif; ?>
         </div>
     </div>
