@@ -53,7 +53,6 @@ class User {
             }
         }
     }
-
     public function logout(): void
     {
         session_start();
@@ -61,7 +60,6 @@ class User {
         header('Location: /');
         exit();
     }
-
     public function saveTelegramUsers(int $chatId): void
     {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE chat_id = :chat_id");
